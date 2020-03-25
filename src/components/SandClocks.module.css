@@ -1,0 +1,52 @@
+.SandClocks {
+  display: flex;
+  position: relative;
+  background: #000;
+  width: 100vw;
+}
+.date {
+  font-size: 100px;
+  line-height: 117px;
+  color: #00e0ff;
+  text-align: center;
+  width: 100%;
+}
+.scale {
+  display: flex;
+  position: absolute;
+  flex-direction: column-reverse;
+  justify-content: space-between;
+  font-size: 5rem;
+  color: #fff;
+  left: 4rem;
+
+  bottom: 1%;
+  height: 88%;
+}
+.dashLine1,
+.dashLine2 {
+  position: absolute;
+  left: 13rem;
+  border-bottom: 3px dashed #fff;
+  z-index: 10;
+}
+.dashLine1 {
+  width: 45%;
+}
+.dashLine2 {
+  width: 80%;
+}
+.difference {
+  position: absolute;
+  margin: 0;
+  text-align: center;
+  width: 100%;
+  font-size: 160px;
+  line-height: 218px;
+  color: #fff;
+  z-index: 10;
+}
+
+.difference span {
+  font-size: 0.8em;
+}

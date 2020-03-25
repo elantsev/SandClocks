@@ -1,24 +1,15 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import SandClocks from './components/SandClocks';
 
-function App() {
+
+function App () {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <SandClocks
+        scale={[140, 150, 160, 170]}
+        data1={{ date: '31.12.16', value: 150 }}
+        data2={{ date: '30.09.17', value: 165.6 }} />
     </div>
   );
 }
