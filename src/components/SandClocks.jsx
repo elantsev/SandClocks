@@ -37,7 +37,6 @@ function SandClocks({ scale, data1, data2, className, ...rest }) {
       <Scale scale={scale} />
       <SandClock sandLevel={hight1} {...data1} />
       <SandClock sandLevel={hight2} {...data2} />
-      
       <div className={s.dashLine1} style={{ bottom: `${hight1}%` }}></div>
       <div className={s.dashLine2} style={{ bottom: `${hight2}%` }}></div>
       <Difference value1={data1.value} value2={data2.value} />
