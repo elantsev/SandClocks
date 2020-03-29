@@ -1,17 +1,22 @@
 import React from 'react';
 import './App.css';
-import SandClocks from './components/SandClocks';
+// import SandClocks from './components/SandClocks';
+import SandClocksSVG from './components/SandClocksSVG';
 
 
 function App () {
   return (
     <div className="App">
-      <SandClocks
+      {/* <SandClocks
         scale={[140, 150, 160, 170]}
         data1={{ date: '31.12.16', value: 150 }}
-        data2={{ date: '30.09.17', value: 165.6 }} />
+        data2={{ date: '30.09.17', value: 165.6 }} /> */}
+      <SandClocksSVG
+        scale={[140, 150, 160, 170]}
+        data1={{ date: '31.12.16', value: 150.6 }}
+        data2={{ date: '30.09.17', value: 162.1 }} />
     </div>
   );
 }
 
-export default App;
+export default App; 
