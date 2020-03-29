@@ -1,5 +1,5 @@
 import React from "react";
-import s from "./SandClocks.module.css";
+import s from "./SandClocksSVG.module.css";
 
 function SandClocksSVG({ scale, data1, data2, className, ...rest }) {
   // Базовые размеры приняты из макета.
@@ -73,8 +73,6 @@ function SandClocksSVG({ scale, data1, data2, className, ...rest }) {
   return (
     <div className={`${s.SandClocks} ${className}`} {...rest}>
       <svg
-        width="2214"
-        height="1329"
         viewBox="0 0 2214 1329"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
