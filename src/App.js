@@ -20,7 +20,7 @@ function App () {
       <div className="SandClocksSVG">
 
         <SandClockSVG sendLevel={0.99} height="100" width="60"/> */}
-      <PieChart />
+      <PieChart startDegree={0} value={0.8} color={'green'} />
     </div>
   );
 }

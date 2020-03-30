@@ -1,11 +1,6 @@
 import React from "react";
 
-const PieChart = ({
-  startDegree = 0,
-  valuePercent = 10,
-  color = "red",
-  ...props
-}) => {
+const PieChart = ({ startDegree = 0, value = 70, color = "red", ...props }) => {
   return (
     <svg
       width="64"
@@ -21,7 +16,7 @@ const PieChart = ({
         r="16"
         stroke={color}
         strokeWidth="32"
-        strokeDasharray={[valuePercent, 100]}
+        strokeDasharray={[value * 100, 100]}
       ></circle>
     </svg>
   );
