@@ -1,5 +1,6 @@
 import React from "react";
 import s from "./SandClocksSVG.module.css";
+import SandClockSVG from "./SandClockSVG";
 
 function SandClocksSVG({ scale, data1, data2, className, ...rest }) {
   // Базовые размеры приняты из макета.
@@ -8,15 +9,18 @@ function SandClocksSVG({ scale, data1, data2, className, ...rest }) {
 
   const getInt = value => Math.trunc(value);
   const getFrac = value => Math.abs((value % 1).toFixed(1) * 10);
-
   const getHight = (value, from = 1282, to = 175) =>
     from -
     ((value - scale[0]) / (scale[scale.length - 1] - scale[0])) * (from - to);
-
   const height1 = getHight(data1.value);
   const height2 = getHight(data2.value);
-  const heightDiff = Math.abs((height2 + height1) / 2 + 60);
 
+  const getSendLevel = (value, from = scale[0], to = scale[scale.length - 1]) =>
+    (value - from) / (to - from);
+  const sendLevel1 = getSendLevel(data1.value);
+  const sendLevel2 = getSendLevel(data2.value);
+
+  const heightDiff = Math.abs((height2 + height1) / 2 + 60);
   const DifferenceBlock = ({ value1, value2 }) => {
     const int = getInt(value2 - value1);
     const frac = getFrac(value2 - value1);
@@ -67,102 +71,8 @@ function SandClocksSVG({ scale, data1, data2, className, ...rest }) {
         xmlns="http://www.w3.org/2000/svg"
       >
         <rect width="2214" height="1329" fill="black" />
-        <mask
-          id="mask1"
-          mask-type="alpha"
-          maskUnits="userSpaceOnUse"
-          x="428"
-          y="129"
-          width="601"
-          height="1200"
-        >
-          <path  
-            d="M428.639 129H1028.02C1028.02 729 765.628 580.883 765.628 729C765.628 877.117 1028.02 729 1028.02 1329H428.639C428.638 729 691.028 877.117 691.028 729C691.028 580.883 428.636 729 428.639 129Z"
-            fill="#C4C4C4"
-          />
-        </mask>
-        <g mask="url(#mask1)">
-          {/* уровень песка в первых часах */}
-          <path d={`M433 1282 h600 V${height1} h-600`} fill="#00E0FF" />
-        </g>
-        <mask
-          id="mask2"
-          mask-type="alpha"
-          maskUnits="userSpaceOnUse"
-          x="1579"
-          y="129"
-          width="600"
-          height="1200"
-        >
-          <path
-            d="M1579.16 129H2178.54C2178.54 729 1916.15 580.883 1916.15 729C1916.15 877.117 2178.54 729 2178.54 1329H1579.16C1579.16 729 1841.55 877.117 1841.55 729C1841.55 580.883 1579.16 729 1579.16 129Z"
-            fill="#C4C4C4"
-          />
-        </mask>
-        <g mask="url(#mask2)">
-          {/* уровень песка во вторых часах */}
-          <path d={`M1578 1282 h600 V${height2} h-600`} fill="#00E0FF" />
-        </g>
-        <path
-          d="M1029.02 131.5C1028.65 429.32 963.303 540.927 898.694 596.562C882.452 610.548 866.192 621.053 850.879 630.118C845.662 633.205 840.526 636.142 835.53 638.998C825.944 644.479 816.874 649.664 808.747 655.055C796.315 663.302 785.739 672.242 778.295 683.962C770.826 695.722 766.631 710.09 766.631 729C766.631 747.91 770.826 762.278 778.295 774.038C785.739 785.759 796.315 794.698 808.747 802.945C816.874 808.337 825.944 813.522 835.53 819.002C840.526 821.858 845.662 824.795 850.879 827.883C866.192 836.947 882.452 847.452 898.694 861.438C963.303 917.073 1028.65 1028.68 1029.02 1326.5H434.643C435.006 1028.68 500.358 917.073 564.967 861.438C581.209 847.452 597.469 836.947 612.782 827.883C617.999 824.795 623.135 821.858 628.132 819.002C637.717 813.521 646.787 808.337 654.914 802.945C667.346 794.698 677.922 785.759 685.366 774.038C692.835 762.278 697.03 747.91 697.03 729C697.03 710.09 692.835 695.722 685.366 683.962C677.922 672.242 667.346 663.302 654.914 655.055C646.786 649.664 637.717 644.479 628.131 638.998C623.135 636.142 617.998 633.205 612.781 630.118C597.468 621.054 581.208 610.548 564.966 596.562C500.356 540.927 435.005 429.321 434.643 131.5H1029.02Z"
-          fill="#00E0FF"
-          fillOpacity="0.2"
-          stroke="#00E0FF"
-          strokeWidth="5"
-          strokeLinejoin="round"
-        />
-        <rect
-          x="398.679"
-          y="131.539"
-          width="666.303"
-          height="43"
-          rx="17.5"
-          fill="black"
-          stroke="#00E0FF"
-          strokeWidth="5"
-          strokeLinejoin="round"
-        />
-        <rect
-          x="398.679"
-          y="1283.38"
-          width="666.303"
-          height="43"
-          rx="17.5"
-          fill="black"
-          stroke="#00E0FF"
-          strokeWidth="5"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M2175.54 131.5C2175.17 429.32 2109.82 540.927 2045.21 596.562C2028.97 610.548 2012.71 621.053 1997.4 630.117C1992.18 633.205 1987.04 636.142 1982.05 638.998C1972.46 644.479 1963.39 649.664 1955.26 655.055C1942.83 663.302 1932.26 672.241 1924.81 683.962C1917.34 695.722 1913.15 710.09 1913.15 729C1913.15 747.91 1917.34 762.278 1924.81 774.038C1932.26 785.759 1942.83 794.698 1955.26 802.945C1963.39 808.337 1972.46 813.521 1982.05 819.002C1987.04 821.858 1992.18 824.795 1997.4 827.883C2012.71 836.947 2028.97 847.452 2045.21 861.438C2109.82 917.073 2175.17 1028.68 2175.54 1326.5H1581.16C1581.52 1028.68 1646.88 917.073 1711.48 861.438C1727.73 847.452 1743.99 836.947 1759.3 827.883C1764.52 824.795 1769.65 821.858 1774.65 819.002C1784.24 813.521 1793.3 808.336 1801.43 802.945C1813.86 794.698 1824.44 785.759 1831.88 774.038C1839.35 762.278 1843.55 747.91 1843.55 729C1843.55 710.09 1839.35 695.722 1831.88 683.962C1824.44 672.241 1813.86 663.302 1801.43 655.055C1793.3 649.664 1784.23 644.479 1774.65 638.998C1769.65 636.142 1764.52 633.205 1759.3 630.117C1743.99 621.053 1727.73 610.548 1711.48 596.562C1646.87 540.927 1581.52 429.32 1581.16 131.5H2175.54Z"
-          fill="#00E0FF"
-          fillOpacity="0.2"
-          stroke="#00E0FF"
-          strokeWidth="5"
-          strokeLinejoin="round"
-        />
-        <rect
-          x="1545.2"
-          y="131.539"
-          width="666.303"
-          height="43"
-          rx="17.5"
-          fill="black"
-          stroke="#00E0FF"
-          strokeWidth="5"
-          strokeLinejoin="round"
-        />
-        <rect
-          x="1545.2"
-          y="1283.38"
-          width="666.303"
-          height="43"
-          rx="17.5"
-          fill="black"
-          stroke="#00E0FF"
-          strokeWidth="5"
-          strokeLinejoin="round"
-        />
+        <SandClockSVG sendLevel={sendLevel1} x="398" y="131" />
+        <SandClockSVG sendLevel={sendLevel2} x="1545" y="131" />
 
         {/*  Шкала  */}
         <svg width={125} y={80} viewBox="0 0 125 1082" fill="none">
