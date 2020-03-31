@@ -1,12 +1,12 @@
 import React from "react";
 
-const SandClockSVG = ({ sendLevel, ...props }) => {
+const SandClockSVG = ({ value, ...props }) => {
   // Базовые размеры приняты из макета.
   // уровень песка и пунктирных линий приходят в компонент в диапазоне от 0 до 1,
   // а в svg идет пропорциональное число в виде абсолютных координат в диапазоне от начала до конца песочных часов (1280=0%, 175=100%)
-  const getYAbsolute = (sendLevel, from = 1157, to = 43) =>
-    from - sendLevel * (from - to);
-  let yAbsolute = getYAbsolute(sendLevel);
+  const getYAbsolute = (value, from = 1157, to = 43) =>
+    from - value * (from - to);
+  let yAbsolute = getYAbsolute(value);
   return (
     <svg
       height="1200"

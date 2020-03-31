@@ -15,10 +15,10 @@ function SandClocksSVG({ scale, data1, data2, className, ...rest }) {
   const height1 = getHight(data1.value);
   const height2 = getHight(data2.value);
 
-  const getSendLevel = (value, from = scale[0], to = scale[scale.length - 1]) =>
+  const getSandLevel = (value, from = scale[0], to = scale[scale.length - 1]) =>
     (value - from) / (to - from);
-  const sendLevel1 = getSendLevel(data1.value);
-  const sendLevel2 = getSendLevel(data2.value);
+  const sandLevel1 = getSandLevel(data1.value);
+  const sandLevel2 = getSandLevel(data2.value);
 
   const heightDiff = Math.abs((height2 + height1) / 2 + 60);
   const DifferenceBlock = ({ value1, value2 }) => {
@@ -64,15 +64,17 @@ function SandClocksSVG({ scale, data1, data2, className, ...rest }) {
   };
 
   return (
-    <div className={`${s.SandClocks} ${className}`} {...rest}>
+    <div className={`${s.SandClocks} ${className}`} {...rest} id="mydiv">
       <svg
+        width="221"
+        height="133"
         viewBox="0 0 2214 1329"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
         <rect width="2214" height="1329" fill="black" />
-        <SandClockSVG sendLevel={sendLevel1} x="398" y="131" />
-        <SandClockSVG sendLevel={sendLevel2} x="1545" y="131" />
+        <SandClockSVG value={sandLevel1} x="398" y="131" />
+        <SandClockSVG value={sandLevel2} x="1545" y="131" />
 
         {/*  Шкала  */}
         <svg width={125} y={80} viewBox="0 0 125 1082" fill="none">
