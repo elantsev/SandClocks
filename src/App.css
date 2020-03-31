@@ -1,5 +1,10 @@
 .SandClocksSVG {
-  height: 100px;
+  /* height: 100px;
   width: 100px;
-  background: red;
+  background: red; */
+}
+@media (max-width: 600px) {
+  .SandClocksSVG {
+    wide: true;
+  }
 }

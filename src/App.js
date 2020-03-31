@@ -14,7 +14,7 @@ function App () {
         scale={[140, 150, 160, 170]}
         data1={{ date: '31.12.16', value: 150 }}
         data2={{ date: '30.09.17', value: 165.6 }} /> */}
-      <SandClocksSVG
+      <SandClocksSVG shift={1000}
         scale={[140, 150, 160, 170]}
         data1={{ date: '31.12.16', value: 151.6 }}
         data2={{ date: '30.09.17', value: 162.1 }} />

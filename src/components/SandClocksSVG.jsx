@@ -2,7 +2,7 @@ import React from "react";
 import s from "./SandClocksSVG.module.css";
 import SandClockSVG from "./SandClockSVG";
 
-function SandClocksSVG({ scale, data1, data2, className, ...rest }) {
+function SandClocksSVG({ scale, data1, data2, className, shift, ...rest }) {
   // Базовые размеры приняты из макета.
   // уровень песка и пунктирных линий приходят в компонент числом в пределах шкалы,
   // а в svg идет пропорциональное число в виде абсолютных координат в диапазоне от начала до конца песочных часов (1280=0%, 175=100%)
@@ -33,14 +33,14 @@ function SandClocksSVG({ scale, data1, data2, className, ...rest }) {
       <>
         {/* данные */}
         <text
-          x="1000"
+          x={shift / 2 + 1000}
           y={heightDiff}
           fill="#ffffff"
           fontSize="160"
           fontWeight="400"
         >
           {int},<tspan fontSize="0.85em">{frac}</tspan>
-          <tspan x="1310" fontSize="0.85em">
+          <tspan x={shift / 2 + 1310} fontSize="0.85em">
             ({percentDiff}%)
           </tspan>
         </text>
@@ -48,7 +48,7 @@ function SandClocksSVG({ scale, data1, data2, className, ...rest }) {
         <svg
           width="37"
           height={height1 - height2}
-          x="1280"
+          x={shift / 2 + 1280}
           y={height2}
           preserveAspectRatio="none"
           viewBox="0 0 37 441"
@@ -68,13 +68,13 @@ function SandClocksSVG({ scale, data1, data2, className, ...rest }) {
       <svg
         width="221"
         height="133"
-        viewBox="0 0 2214 1329"
+        viewBox={`0 0 ${2214 + shift} 1329`}
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <rect width="2214" height="1329" fill="black" />
+        <rect width={2214 + shift} height="1329" fill="black" />
         <SandClockSVG value={sandLevel1} x="398" y="131" />
-        <SandClockSVG value={sandLevel2} x="1545" y="131" />
+        <SandClockSVG value={sandLevel2} x={1545 + shift} y="131" />
 
         {/*  Шкала  */}
         <svg width={125} y={80} viewBox="0 0 125 1082" fill="none">
@@ -93,20 +93,26 @@ function SandClocksSVG({ scale, data1, data2, className, ...rest }) {
           <tspan fontSize="0.85em">{getFrac(data1.value)}</tspan>
         </text>
         <path
-          d={`M150 ${height1} h1400`}
+          d={`M150 ${height1} h${1400 + shift / 2}`}
           stroke="#ffffff"
           strokeDasharray="20,20"
           strokeWidth="5"
         />
-        <text x="1700" y="100" fill="#00E0FF" fontSize="100">
+        <text x={shift + 1700} y="100" fill="#00E0FF" fontSize="100">
           {data2.date}
         </text>
-        <text x="1680" y="400" fill="#ffffff" fontSize="160" fontWeight="400">
+        <text
+          x={1680 + shift}
+          y="400"
+          fill="#ffffff"
+          fontSize="160"
+          fontWeight="400"
+        >
           {getInt(data2.value)},
           <tspan fontSize="0.85em">{getFrac(data2.value)}</tspan>
         </text>
         <path
-          d={`M150 ${height2} h2050`}
+          d={`M150 ${height2} h${2050 + shift}`}
           stroke="#ffffff"
           strokeDasharray="20,20"
           strokeWidth="5"
