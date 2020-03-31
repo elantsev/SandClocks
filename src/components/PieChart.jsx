@@ -10,6 +10,12 @@ const PieChart = ({ startDegree = 0, value = 70, color = "red", ...props }) => {
       viewBox="0 0 64 64"
       {...props}
     >
+      <defs>
+        <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#00bc9b" />
+          <stop offset="100%" stop-color="#5eaefd" />
+        </linearGradient>
+      </defs>
       <circle
         cx="32"
         cy="32"

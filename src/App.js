@@ -4,6 +4,7 @@ import './App.css';
 import SandClocksSVG from './components/SandClocksSVG';
 import SandClockSVG from './components/SandClockSVG';
 import PieChart from './components/PieChart';
+import SpeedometerChart from './components/SpeedometerChart';
 
 
 function App () {
@@ -13,14 +14,14 @@ function App () {
         scale={[140, 150, 160, 170]}
         data1={{ date: '31.12.16', value: 150 }}
         data2={{ date: '30.09.17', value: 165.6 }} /> */}
-      {/* <SandClocksSVG
+      <SandClocksSVG
         scale={[140, 150, 160, 170]}
         data1={{ date: '31.12.16', value: 140.6 }}
         data2={{ date: '30.09.17', value: 162.1 }} />
-      <div className="SandClocksSVG">
 
-        <SandClockSVG sendLevel={0.99} height="100" width="60"/> */}
-      <PieChart startDegree={0} value={0.8} color={'green'} />
+      <SandClockSVG sendLevel={0.65} height="100" width="60" />
+      <PieChart startDegree={0} value={0.8} color={'url(#gradient)'} />
+      <SpeedometerChart value={0.65} />
     </div>
   );
 }
