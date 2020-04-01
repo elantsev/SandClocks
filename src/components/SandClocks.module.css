@@ -3,6 +3,19 @@
   position: relative;
   background: #000;
   width: 100vw;
+  height: 1000px;
+}
+.sandClock1 {
+  position: absolute;
+  bottom: 0;
+  height: 880px;
+  left: 18%;
+}
+.sandClock2 {
+  position: absolute;
+  bottom: 0;
+  height: 880px;
+  right: 3%;
 }
 .date {
   font-size: 100px;
@@ -31,14 +44,15 @@
   z-index: 10;
 }
 .dashLine1 {
-  width: 45%;
+  width: 50%;
 }
 .dashLine2 {
-  width: 80%;
+  width: 82%;
 }
 .difference {
   position: absolute;
   margin: 0;
+  margin-left: 6%;
   text-align: center;
   width: 100%;
   font-size: 160px;
@@ -49,4 +63,8 @@
 
 .difference span {
   font-size: 0.8em;
+}
+.arrow{
+  position: absolute;
+  left: 56%;
 }

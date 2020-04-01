@@ -11,7 +11,7 @@ function App () {
         data1={{ date: '31.12.16', value: 150 }}
         data2={{ date: '30.09.17', value: 165.6 }} />
     </div>
-  );
-}
+  ); 
+}  
 
-export default App;
+export default App; 
