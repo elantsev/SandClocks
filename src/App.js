@@ -16,16 +16,20 @@ function App () {
         data2={{ date: '30.09.17', value: 165.6 }} /> */}
       <SandClocksSVG shift={0}
         scale={[140, 150, 160, 170]}
-        data1={{ date: '31.12.16', value: 151.6 }}
-        data2={{ date: '30.09.17', value: 162.1 }} />
+        data1={{ date: '31.12.16', value: 140 }}
+        data2={{ date: '30.09.17', value: 170 }} />
       <SandClocksSVG shift={500}
         scale={[140, 150, 160, 170]}
-        data1={{ date: '31.12.16', value: 151.6 }}
-        data2={{ date: '30.09.17', value: 162.1 }} />
+        data1={{ date: '31.12.16', value: 140.5 }}
+        data2={{ date: '30.09.17', value: 169.5 }} />
       <SandClocksSVG shift={1000}
         scale={[140, 150, 160, 170]}
-        data1={{ date: '31.12.16', value: 151.6 }}
-        data2={{ date: '30.09.17', value: 162.1 }} />
+        data1={{ date: '31.12.16', value: 140.6 }}
+        data2={{ date: '30.09.17', value: 142.1 }} />
+      <SandClocksSVG shift={500}
+        scale={[140, 150, 160, 170]}
+        data1={{ date: '31.12.16', value: 160.6 }}
+        data2={{ date: '30.09.17', value: 142.1 }} />
 
       <SandClockSVG value={0.65} height="100" width="60" />
       <PieChart startDegree={90} value={0.1} color={'url(#gradient)'} />
