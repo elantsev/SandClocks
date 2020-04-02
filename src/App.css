@@ -1,10 +1,19 @@
-.SandClocksSVG {
-  /* height: 100px;
-  width: 100px;
-  background: red; */
+.App {
+  display: flex;
+  flex-wrap: wrap;
 }
-@media (max-width: 600px) {
-  .SandClocksSVG {
-    wide: true;
-  }
+.App > * {
+  width: 33%;
+  max-width: 500px;
+  min-width: 300px;
+  margin: 10px;
 }
+/* .App {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 5%;
+}
+.App > * {
+  max-width: 500px;
+  min-width: 300px;
+} */
