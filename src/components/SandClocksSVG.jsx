@@ -22,18 +22,28 @@ function SandClocksSVG({ scale, data1, data2, className, shift, ...rest }) {
   const height2 = getHight(sandLevel2);
 
   let heightDiff;
+  let arrowDirection = 1;
+
   //  если разность достаточная - выводим данные между линиями
   if (Math.abs(sandLevel1 - sandLevel2) > 0.22) {
     heightDiff = Math.abs((height1 + height2) / 2 + 60);
-    console.log(1);
+    if (sandLevel1 > sandLevel2) {
+      arrowDirection = -1;
+    }
     //  если разность маленькая и среднее значение в нижней части часов -
     //  выводим данные над самой высокой линией
   } else if ((sandLevel1 + sandLevel2) / 2 > 0.5) {
-    heightDiff = (sandLevel1 < sandLevel2 ? height1 : height2)+170;
+    heightDiff = (sandLevel1 < sandLevel2 ? height1 : height2) + 170;
+    if (sandLevel1 < sandLevel2) {
+      arrowDirection = -1;
+    }
     //  если разность маленькая и среднее значение в верхней части часов -
     //  выводим данные под самой низкой линией
   } else if ((sandLevel1 + sandLevel2) / 2 < 0.5) {
     heightDiff = (sandLevel1 > sandLevel2 ? height1 : height2) - 100;
+    if (sandLevel1 < sandLevel2) {
+      arrowDirection = -1;
+    }
   }
 
   const percentDiff = (
@@ -99,10 +109,9 @@ function SandClocksSVG({ scale, data1, data2, className, shift, ...rest }) {
           <tspan fontSize="0.85em">{getFrac(data2.value)}</tspan>
         </text>
 
-        {/* <DifferenceBlock value1={data1.value} value2={data2.value} /> */}
-        {/* данные */}
+        {/* данные о разности */}
         <text
-          x={shift / 2 + 1270}
+          x={shift / 2 + 1265}
           y={heightDiff}
           textAnchor="end"
           fill="#ffffff"
@@ -114,10 +123,9 @@ function SandClocksSVG({ scale, data1, data2, className, shift, ...rest }) {
         </text>
 
         <text
-          x={shift / 2 + 1470}
           y={heightDiff}
           textAnchor="start"
-          x={shift / 2 + 1310}
+          x={shift / 2 + 1300}
           fill="#ffffff"
           fontSize="136"
         >
@@ -137,20 +145,41 @@ function SandClocksSVG({ scale, data1, data2, className, shift, ...rest }) {
           strokeWidth="5"
         />
         {/* вертикальная стрелка */}
-        <svg
-          width="37"
-          height={height1 - height2}
-          x={shift / 2 + 1280}
-          y={height2}
-          preserveAspectRatio="none"
-          viewBox="0 0 37 441"
-          fill="none"
-        >
-          <path
-            d="M20.2678 0.732233C19.2915 -0.244078 17.7085 -0.244078 16.7322 0.732233L0.82233 16.6421C-0.15398 17.6184 -0.15398 19.2014 0.82233 20.1777C1.79864 21.154 3.38155 21.154 4.35786 20.1777L18.5 6.03553L32.6421 20.1777C33.6184 21.154 35.2014 21.154 36.1777 20.1777C37.154 19.2014 37.154 17.6184 36.1777 16.6421L20.2678 0.732233ZM16.7322 440.268C17.7085 441.244 19.2915 441.244 20.2678 440.268L36.1777 424.358C37.154 423.382 37.154 421.799 36.1777 420.822C35.2014 419.846 33.6184 419.846 32.6421 420.822L18.5 434.964L4.35786 420.822C3.38155 419.846 1.79864 419.846 0.82233 420.822C-0.15398 421.799 -0.15398 423.382 0.82233 424.358L16.7322 440.268ZM16 2.5L16 438.5H21L21 2.5L16 2.5Z"
-            fill="white"
-          />
-        </svg>
+        <path
+          d={`M${shift / 2 + 1280} ${height2} V${height1}`}
+          stroke="#ffffff"
+          strokeWidth="5"
+        />
+        <path
+          d={`M${shift / 2 + 1280} ${height1} l-20 ${-20 * arrowDirection}`}
+          stroke="#ffffff"
+          strokeWidth="5"
+        />
+        <path
+          d={`M${shift / 2 + 1280} ${height1} l20 ${-20 * arrowDirection}`}
+          stroke="#ffffff"
+          strokeWidth="5"
+        />
+        <path
+          d={`M${shift / 2 + 1280} ${height1} v ${-200 * arrowDirection}`}
+          stroke="#ffffff"
+          strokeWidth="5"
+        />
+        <path
+          d={`M${shift / 2 + 1280} ${height2} l20 ${20 * arrowDirection}`}
+          stroke="#ffffff"
+          strokeWidth="5"
+        />
+        <path
+          d={`M${shift / 2 + 1280} ${height2} l-20 ${20 * arrowDirection}`}
+          stroke="#ffffff"
+          strokeWidth="5"
+        />
+        <path
+          d={`M${shift / 2 + 1280} ${height2} v ${200 * arrowDirection}`}
+          stroke="#ffffff"
+          strokeWidth="3"
+        />
       </svg>
     </div>
   );

@@ -16,7 +16,7 @@ function App () {
         data2={{ date: '30.09.17', value: 165.6 }} /> */}
       <SandClocksSVG shift={0} className="item"
         scale={[140, 150, 160, 170]}
-        data1={{ date: '31.12.16', value: 140 }}
+        data1={{ date: '31.12.16', value: 164 }}
         data2={{ date: '30.09.17', value: 170 }} />
       <SandClocksSVG shift={500}
         scale={[140, 150, 160, 170]}
@@ -24,11 +24,11 @@ function App () {
         data2={{ date: '30.09.17', value: 169.5 }} />
       <SandClocksSVG shift={1000}
         scale={[140, 150, 160, 170]}
-        data1={{ date: '31.12.16', value: 140.6 }}
-        data2={{ date: '30.09.17', value: 142.1 }} />
+        data1={{ date: '31.12.16', value: 142.6 }}
+        data2={{ date: '30.09.17', value: 140.1 }} />
       <SandClocksSVG shift={500}
         scale={[140, 150, 160, 170]}
-        data1={{ date: '31.12.16', value: 160.6 }}
+        data1={{ date: '31.12.16', value: 140.6 }}
         data2={{ date: '30.09.17', value: 142.1 }} />
 
       {/* <SandClockSVG value={0.65} height="100" width="60" />
