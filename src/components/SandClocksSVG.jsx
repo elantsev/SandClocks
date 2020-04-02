@@ -66,8 +66,8 @@ function SandClocksSVG({ scale, data1, data2, className, shift, ...rest }) {
   return (
     <div className={`${s.SandClocks} ${className}`} {...rest} id="mydiv">
       <svg
-        width={221 + (221 * shift) / 2214}
-        height="133"
+        // width={221 + (221 * shift) / 2214}
+        // height="133"
         viewBox={`0 0 ${2214 + shift} 1329`}
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
