@@ -14,7 +14,6 @@ function SandClocksSVG({ scale, data1, data2, className, shift, ...rest }) {
     (value - from) / (to - from);
   const sandLevel1 = getSandLevel(data1.value);
   const sandLevel2 = getSandLevel(data2.value);
-  console.log(sandLevel1, sandLevel2);
 
   const getHight = (sandLevel, from = 1282, to = 175) =>
     from - sandLevel * (from - to);
