@@ -9,69 +9,37 @@ function SandClocksSVG({ scale, data1, data2, className, shift, ...rest }) {
 
   const getInt = value => Math.trunc(value);
   const getFrac = value => Math.abs((value % 1).toFixed(1) * 10);
-  const getHight = (value, from = 1282, to = 175) =>
-    from -
-    ((value - scale[0]) / (scale[scale.length - 1] - scale[0])) * (from - to);
-  const height1 = getHight(data1.value);
-  const height2 = getHight(data2.value);
 
   const getSandLevel = (value, from = scale[0], to = scale[scale.length - 1]) =>
     (value - from) / (to - from);
   const sandLevel1 = getSandLevel(data1.value);
   const sandLevel2 = getSandLevel(data2.value);
+  console.log(sandLevel1, sandLevel2);
 
-  const heightDiff = Math.abs((height2 + height1) / 2 + 60);
+  const getHight = (sandLevel, from = 1282, to = 175) =>
+    from - sandLevel * (from - to);
+  const height1 = getHight(sandLevel1);
+  const height2 = getHight(sandLevel2);
 
-  const DifferenceBlock = ({ value1, value2 }) => {
-    const int = getInt(value2 - value1);
-    const frac = getFrac(value2 - value1);
+  let heightDiff;
+  //  если разность достаточная - выводим данные между линиями
+  if (Math.abs(sandLevel1 - sandLevel2) > 0.22) {
+    heightDiff = Math.abs((height1 + height2) / 2 + 60);
+    console.log(1);
+    //  если разность маленькая и среднее значение в нижней части часов -
+    //  выводим данные над самой высокой линией
+  } else if ((sandLevel1 + sandLevel2) / 2 > 0.5) {
+    heightDiff = (sandLevel1 < sandLevel2 ? height1 : height2)+170;
+    //  если разность маленькая и среднее значение в верхней части часов -
+    //  выводим данные под самой низкой линией
+  } else if ((sandLevel1 + sandLevel2) / 2 < 0.5) {
+    heightDiff = (sandLevel1 > sandLevel2 ? height1 : height2) - 100;
+  }
 
-    const percentDiff = (
-      ((data2.value - data1.value) / data1.value) *
-      100
-    ).toFixed();
-    return (
-      <>
-        {/* данные */}
-        <text
-          x={shift / 2 + 1270}
-          y={heightDiff}
-          textAnchor="end"
-          fill="#ffffff"
-          fontSize="160"
-          fontWeight="400"
-        >
-          {int},<tspan fontSize="0.85em">{frac}</tspan>
-        </text>
-
-        <text
-          x={shift / 2 + 1470}
-          y={heightDiff}
-          textAnchor="start"
-          x={shift / 2 + 1310}
-          fill="#ffffff"
-          fontSize="136"
-        >
-          ({percentDiff}%)
-        </text>
-        {/* вертикальная стрелка */}
-        <svg
-          width="37"
-          height={height1 - height2}
-          x={shift / 2 + 1280}
-          y={height2}
-          preserveAspectRatio="none"
-          viewBox="0 0 37 441"
-          fill="none"
-        >
-          <path
-            d="M20.2678 0.732233C19.2915 -0.244078 17.7085 -0.244078 16.7322 0.732233L0.82233 16.6421C-0.15398 17.6184 -0.15398 19.2014 0.82233 20.1777C1.79864 21.154 3.38155 21.154 4.35786 20.1777L18.5 6.03553L32.6421 20.1777C33.6184 21.154 35.2014 21.154 36.1777 20.1777C37.154 19.2014 37.154 17.6184 36.1777 16.6421L20.2678 0.732233ZM16.7322 440.268C17.7085 441.244 19.2915 441.244 20.2678 440.268L36.1777 424.358C37.154 423.382 37.154 421.799 36.1777 420.822C35.2014 419.846 33.6184 419.846 32.6421 420.822L18.5 434.964L4.35786 420.822C3.38155 419.846 1.79864 419.846 0.82233 420.822C-0.15398 421.799 -0.15398 423.382 0.82233 424.358L16.7322 440.268ZM16 2.5L16 438.5H21L21 2.5L16 2.5Z"
-            fill="white"
-          />
-        </svg>
-      </>
-    );
-  };
+  const percentDiff = (
+    ((data2.value - data1.value) / data1.value) *
+    100
+  ).toFixed();
 
   return (
     <div className={`${s.SandClocks} ${className}`} {...rest} id="mydiv">
@@ -109,12 +77,7 @@ function SandClocksSVG({ scale, data1, data2, className, shift, ...rest }) {
           {getInt(data1.value)},
           <tspan fontSize="0.85em">{getFrac(data1.value)}</tspan>
         </text>
-        <path
-          d={`M150 ${height1} h${1400 + shift / 2}`}
-          stroke="#ffffff"
-          strokeDasharray="20,20"
-          strokeWidth="5"
-        />
+
         <text
           x={shift + 1890}
           y="100"
@@ -135,14 +98,59 @@ function SandClocksSVG({ scale, data1, data2, className, shift, ...rest }) {
           {getInt(data2.value)},
           <tspan fontSize="0.85em">{getFrac(data2.value)}</tspan>
         </text>
+
+        {/* <DifferenceBlock value1={data1.value} value2={data2.value} /> */}
+        {/* данные */}
+        <text
+          x={shift / 2 + 1270}
+          y={heightDiff}
+          textAnchor="end"
+          fill="#ffffff"
+          fontSize="160"
+          fontWeight="400"
+        >
+          {getInt(data2.value - data1.value)},
+          <tspan fontSize="0.85em">{getFrac(data2.value - data1.value)}</tspan>
+        </text>
+
+        <text
+          x={shift / 2 + 1470}
+          y={heightDiff}
+          textAnchor="start"
+          x={shift / 2 + 1310}
+          fill="#ffffff"
+          fontSize="136"
+        >
+          ({percentDiff}%)
+        </text>
+        {/* горизонтальные линии */}
+        <path
+          d={`M150 ${height1} h${1400 + shift / 2}`}
+          stroke="#ffffff"
+          strokeDasharray="20,20"
+          strokeWidth="5"
+        />
         <path
           d={`M150 ${height2} h${2050 + shift}`}
           stroke="#ffffff"
           strokeDasharray="20,20"
           strokeWidth="5"
         />
-
-        <DifferenceBlock value1={data1.value} value2={data2.value} />
+        {/* вертикальная стрелка */}
+        <svg
+          width="37"
+          height={height1 - height2}
+          x={shift / 2 + 1280}
+          y={height2}
+          preserveAspectRatio="none"
+          viewBox="0 0 37 441"
+          fill="none"
+        >
+          <path
+            d="M20.2678 0.732233C19.2915 -0.244078 17.7085 -0.244078 16.7322 0.732233L0.82233 16.6421C-0.15398 17.6184 -0.15398 19.2014 0.82233 20.1777C1.79864 21.154 3.38155 21.154 4.35786 20.1777L18.5 6.03553L32.6421 20.1777C33.6184 21.154 35.2014 21.154 36.1777 20.1777C37.154 19.2014 37.154 17.6184 36.1777 16.6421L20.2678 0.732233ZM16.7322 440.268C17.7085 441.244 19.2915 441.244 20.2678 440.268L36.1777 424.358C37.154 423.382 37.154 421.799 36.1777 420.822C35.2014 419.846 33.6184 419.846 32.6421 420.822L18.5 434.964L4.35786 420.822C3.38155 419.846 1.79864 419.846 0.82233 420.822C-0.15398 421.799 -0.15398 423.382 0.82233 424.358L16.7322 440.268ZM16 2.5L16 438.5H21L21 2.5L16 2.5Z"
+            fill="white"
+          />
+        </svg>
       </svg>
     </div>
   );
