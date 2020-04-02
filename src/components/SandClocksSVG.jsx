@@ -21,6 +21,7 @@ function SandClocksSVG({ scale, data1, data2, className, shift, ...rest }) {
   const sandLevel2 = getSandLevel(data2.value);
 
   const heightDiff = Math.abs((height2 + height1) / 2 + 60);
+
   const DifferenceBlock = ({ value1, value2 }) => {
     const int = getInt(value2 - value1);
     const frac = getFrac(value2 - value1);
@@ -33,16 +34,25 @@ function SandClocksSVG({ scale, data1, data2, className, shift, ...rest }) {
       <>
         {/* данные */}
         <text
-          x={shift / 2 + 1000}
+          x={shift / 2 + 1270}
           y={heightDiff}
+          textAnchor="end"
           fill="#ffffff"
           fontSize="160"
           fontWeight="400"
         >
           {int},<tspan fontSize="0.85em">{frac}</tspan>
-          <tspan x={shift / 2 + 1310} fontSize="0.85em">
-            ({percentDiff}%)
-          </tspan>
+        </text>
+
+        <text
+          x={shift / 2 + 1470}
+          y={heightDiff}
+          textAnchor="start"
+          x={shift / 2 + 1310}
+          fill="#ffffff"
+          fontSize="136"
+        >
+          ({percentDiff}%)
         </text>
         {/* вертикальная стрелка */}
         <svg
@@ -85,10 +95,17 @@ function SandClocksSVG({ scale, data1, data2, className, shift, ...rest }) {
         </svg>
 
         {/* данные */}
-        <text x="540" y="100" fill="#00E0FF" fontSize="100">
+        <text x="740" y="100" fill="#00E0FF" fontSize="100" textAnchor="middle">
           {data1.date}
         </text>
-        <text x="590" y="400" fill="#ffffff" fontSize="160" fontWeight="400">
+        <text
+          x="730"
+          y="400"
+          fill="#ffffff"
+          fontSize="160"
+          fontWeight="400"
+          textAnchor="middle"
+        >
           {getInt(data1.value)},
           <tspan fontSize="0.85em">{getFrac(data1.value)}</tspan>
         </text>
@@ -98,15 +115,22 @@ function SandClocksSVG({ scale, data1, data2, className, shift, ...rest }) {
           strokeDasharray="20,20"
           strokeWidth="5"
         />
-        <text x={shift + 1700} y="100" fill="#00E0FF" fontSize="100">
+        <text
+          x={shift + 1890}
+          y="100"
+          fill="#00E0FF"
+          fontSize="100"
+          textAnchor="middle"
+        >
           {data2.date}
         </text>
         <text
-          x={1680 + shift}
+          x={1880 + shift}
           y="400"
           fill="#ffffff"
           fontSize="160"
           fontWeight="400"
+          textAnchor="middle"
         >
           {getInt(data2.value)},
           <tspan fontSize="0.85em">{getFrac(data2.value)}</tspan>
