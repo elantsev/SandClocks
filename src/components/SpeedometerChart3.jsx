@@ -5,60 +5,59 @@ const SpeedometerChart3 = ({ value1, value2, value3, ...props }) => {
     <svg fill="none" viewBox="-100 0 1303 1159" {...props}>
       <g mask="url(#cut-off)">
         <circle
-          cx="540"
-          cy="650"
+          cx="550"
+          cy="655"
           r="530"
           stroke="#7688A1"
           strokeWidth="530"
           strokeDasharray={[3330, 3330]}
-          transform={`rotate(131.6 540 660)`}
+          transform={`rotate(132.6 550 655)`}
         ></circle>
         <circle
-          cx="540"
-          cy="650"
+          cx="550"
+          cy="655"
           r="530"
           stroke="#FF48B6"
           strokeWidth="530"
-          strokeDasharray={[value2 * 0.765 * 3330, 3330]}
-          transform={`rotate(131.6 540 660)`}
+          strokeDasharray={[value2 * 0.7635 * 3330, 3330]}
+          transform={`rotate(132.6 550 655)`}
         ></circle>
         <circle
-          cx="540"
-          cy="650"
+          cx="550"
+          cy="655"
           r="530"
           stroke="#00E0FF"
           strokeWidth="530"
-          strokeDasharray={[value1 * 0.765 * 3330, 3330]}
-          transform={`rotate(131.6 540 660)`}
+          strokeDasharray={[value1 * 0.7635 * 3330, 3330]}
+          transform={`rotate(132.6 550 655)`}
         ></circle>
       </g>
-      {/* внутренняя стрелочка */}
+      {/* внутренняя стрелка */}
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M550 180 l-15 80 l30 0 Z"
         fill="#00E0FF"
-        transform={`rotate(${value1 * 274.4 - 142} 540 650)`}
+        transform={`rotate(${value1 * 275 - 137.5} 550 655)`}
       />
-      {/* Внешняя стрелочка */}
+      {/* Внешние стрелки */}
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M550 100 l-15 -80 l30 0 Z"
         fill="#FF48B6"
-        transform={`rotate(${value2 * 275.5 - 139.5} 540 650)`}
+        transform={`rotate(${value2 * 275 - 137.5} 550 655)`}
       />
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M550 100 l-15 -80 l30 0 Z"
         fill="#FF48B6"
-        transform={`rotate(${value3 * 274 - 139.5} 540 650)`}
+        transform={`rotate(${value3 * 275 - 137.5} 550 655)`}
       />
 
       <defs>
         <mask id="cut-off">
-          {/* вспомогательный круг */}
           <g>
             <path
               d="M74.0451 650.199H3.96843C1.77673 650.199 0 650.774 0 651.483V656.716C0 657.425 1.77673 658 3.96843 658H74.0451C76.2368 658 78.0135 657.425 78.0135 656.716V651.483C78.0135 650.774 76.2368 650.199 74.0451 650.199Z"
