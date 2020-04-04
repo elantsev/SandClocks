@@ -3,8 +3,6 @@ import React from "react";
 const PieChart = ({ startDegree = 0, value = 70, color = "red", ...props }) => {
   return (
     <svg
-      width="64"
-      height="64"
       fill="none"
       transform={`rotate(${startDegree - 90} 0 0)`}
       viewBox="0 0 64 64"
