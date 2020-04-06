@@ -68,13 +68,13 @@ function Tachometer({ value }) {
         </defs>
         <linearGradient
           id="paint1_linear"
-          x1="500.307"
-          x2="500.868"
-          y1="160.513"
-          y2="409.031"
+          x1="0"
+          x2="0%"
+          y1="0"
+          y2="2%"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stopColor="#00F9A6"></stop>
+          <stop stopColor="#ffF9A6"></stop>
           <stop offset="1" stopColor="#09B7C2"></stop>
         </linearGradient>
       </defs>

@@ -7,7 +7,15 @@ import PieChart from './components/PieChart';
 import Tachometer from './components/Tachometer';
 import Tachometer3 from './components/Tachometer3';
 import DonutChart3 from './components/DonutChart3';
-
+import ReactSvgDonutChart from './components/ReactSvgDonutChart/ReactSvgDonutChart';
+const data = [
+  { value: 350, strokeWidth: 17, title: "Сегмент 1", stroke: "url(#ReactSvgDonutChart_gradient2)" },
+  { value: 60, strokeWidth: 25, stroke: "url(#ReactSvgDonutChart_gradient3)" },
+  { value: 61, strokeWidth: 20, stroke: "url(#ReactSvgDonutChart_gradient1)" },
+  { value: 30, strokeWidth: 10, stroke: "url(#ReactSvgDonutChart_gradient1)", },
+  { value: 20, strokeWidth: 10, stroke: "#69c2b0" },
+  { value: 70, strokeWidth: 15, stroke: "#a1d9ce", title: "Сегмент 2" },
+]
 
 function App () {
   return (
@@ -38,6 +46,7 @@ function App () {
       <Tachometer value={0.85} />
       <Tachometer3 value1={0.33} value2={0.35} value3={0.45} text={263.5} units={['₽', 'млрд']} />
       <DonutChart3 startDegree={60} value1={0.65} value2={0.7} value3={0.85} text={"3263.5"} units={['₽', 'млрд']} />
+      <ReactSvgDonutChart data={data} spacing={0.8} text={"3263.5"} units={['₽', 'млрд']}/>
     </div>
   );
 }
