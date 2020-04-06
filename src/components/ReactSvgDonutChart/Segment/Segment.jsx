@@ -8,9 +8,11 @@ const Segment = ({
   strokeDasharray,
   strokeDashoffset,
   strokeWidth,
-  title
+  title,
+  startDegree
 }) => (
   <circle
+    transform={`rotate(${startDegree - 90} ${center.x} ${center.y})`}
     cx={center.x}
     cy={center.y}
     r={radius}
@@ -30,11 +32,13 @@ Segment.propTypes = {
   strokeDashoffset: PropTypes.number.isRequired,
   strokeWidth: PropTypes.number,
   title: PropTypes.string,
-  value: PropTypes.number.isRequired
+  value: PropTypes.number.isRequired,
+  startDegree: PropTypes.number
 };
 
 Segment.defaultProps = {
-  strokeWidth: 5
+  strokeWidth: 5,
+  startDegree: 0
 };
 
 export default Segment;

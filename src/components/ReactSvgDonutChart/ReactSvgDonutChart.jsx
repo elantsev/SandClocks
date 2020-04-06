@@ -4,16 +4,31 @@ import { center, radius } from "./constants";
 import Segment from "./Segment/Segment";
 import { width } from "./constants";
 
-const ReactSvgDonutChart = ({ data, spacing, text, units, ...rest }) => {
+const ReactSvgDonutChart = ({
+  data,
+  spacing,
+  startDegree,
+  text,
+  units,
+  ...rest
+}) => {
   const total = data.reduce((prev, current) => current.value + prev, 0);
   let percentAcc = 0;
+  const int = Math.trunc(text);
+  const frac = Math.abs((text % 1).toFixed(1) * 10);
+
   return (
-    <svg
-      fill="#ff0000"
-      stroke="#00FF00"
-      viewBox={`0 0 ${width} ${width}`}
-      {...rest}
-    >
+    <svg viewBox={`0 0 ${width} ${width}`} {...rest}>
+      <circle
+        id="gray-bg"
+        cx={center.x}
+        cy={center.y}
+        r={radius * 1.7}
+        fill="rgba(0, 224, 255, 0.1)"
+        strokeWidth="0.2"
+        strokeDasharray="1,1"
+        stroke="#000000"
+      ></circle>
       {data.map((d, i) => {
         const percent = (d.value / Math.ceil(total)) * 100;
         const DashArrayPercent =
@@ -28,6 +43,7 @@ const ReactSvgDonutChart = ({ data, spacing, text, units, ...rest }) => {
         return (
           percent > 0 && (
             <Segment
+              startDegree={startDegree}
               key={i}
               strokeDasharray={strokeDasharray}
               strokeDashoffset={strokeDashoffset}
@@ -43,6 +59,27 @@ const ReactSvgDonutChart = ({ data, spacing, text, units, ...rest }) => {
         fill="#000000"
         strokeWidth="0"
       ></circle>
+      <text
+        x={width / 2}
+        y="28"
+        fill="#009DB2"
+        textAnchor="middle"
+        fontSize="7.5"
+        fontWeight="300"
+      >
+        {int}
+        <tspan fontSize="0.85em" opacity={0.8}>
+          ,{frac}
+        </tspan>
+      </text>
+      <text fill="#009DB2" textAnchor="middle" fontSize="6">
+        <tspan x={width / 2} y="36">
+          {units[0]}
+        </tspan>
+        <tspan x={width / 2} y="39" fontSize="3" fontWeight="500">
+          {units[1]}
+        </tspan>
+      </text>
       <defs>
         <linearGradient
           id="ReactSvgDonutChart_gradient1"
@@ -91,7 +128,10 @@ ReactSvgDonutChart.propTypes = {
       value: PropTypes.number.isRequired
     })
   ),
-  spacing: PropTypes.number
+  spacing: PropTypes.number,
+  text: PropTypes.string.isRequired,
+  units: PropTypes.arrayOf(PropTypes.string),
+  startDegree: PropTypes.number
 };
 
 ReactSvgDonutChart.defaultProps = {
