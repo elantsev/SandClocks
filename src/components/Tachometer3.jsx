@@ -1,6 +1,6 @@
 import React from "react";
 
-const SpeedometerChart3 = ({ value1, value2, value3, ...props }) => {
+const Tachometer3 = ({ value1, value2, value3, ...props }) => {
   return (
     <svg fill="none" viewBox="-100 0 1303 1159" {...props}>
       <g mask="url(#cut-off)">
@@ -373,4 +373,4 @@ const SpeedometerChart3 = ({ value1, value2, value3, ...props }) => {
     </svg>
   );
 };
-export default SpeedometerChart3;
+export default Tachometer3;

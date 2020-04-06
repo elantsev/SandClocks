@@ -17,8 +17,8 @@ const DonutChart3 = ({
     >
       <defs>
         <linearGradient id="paint1_linear12" x1="0%" y1="0%" x2="75%" y2="0%">
-          <stop stop-color="#00E0FF" />
-          <stop offset="1" stop-color="#004FAB" />
+          <stop stopColor="#00E0FF" />
+          <stop offset="1" stopColor="#004FAB" />
         </linearGradient>
       </defs>
       <circle

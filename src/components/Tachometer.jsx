@@ -1,12 +1,8 @@
 import React from "react";
 
-function SpeedometerChart({ value }) {
+function Tachometer({ value }) {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="-50 0 941 914"
-    >
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-50 0 941 914">
       {/* нижняя, серая шкала */}
       <path
         fill="#E6E6E6"
@@ -51,17 +47,6 @@ function SpeedometerChart({ value }) {
           </mask>
         </defs>
         <linearGradient
-          id="paint0_linear"
-          x1="382.577"
-          x2="1098.02"
-          y1="331.935"
-          y2="1380.35"
-          gradientUnits="userSpaceOnUse"
-        >
-          <stop></stop>
-          <stop offset="1"></stop>
-        </linearGradient>
-        <linearGradient
           id="paint1_linear"
           x1="500.307"
           x2="500.868"
@@ -77,4 +62,4 @@ function SpeedometerChart({ value }) {
   );
 }
 
-export default SpeedometerChart;
+export default Tachometer;
