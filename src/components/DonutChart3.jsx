@@ -1,11 +1,10 @@
 import React from "react";
 
 const DonutChart3 = ({
-  startDegree = 180,
+  startDegree = 0,
   value1 = 0.1,
   value2 = 0.6,
   value3 = 1,
-  color = "url(#paint1_linear)",
   ...props
 }) => {
   return (
