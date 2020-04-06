@@ -34,10 +34,10 @@ function App () {
         data2={{ date: '30.09.17', value: 142.1 }} /> */}
 
       {/* <SandClockSVG value={0.65} height="100" width="60" /> */}
-      <PieChart startDegree={90} value={0.85} color={'url(#gradient)'} />
+      <PieChart startDegree={0} value={0.85} color={'url(#gradient)'} />
       <Tachometer value={0.85} />
-      <Tachometer3 value1={0.33} value2={0.35} value3={0.45} />
-      <DonutChart3 startDegree={0} value1={0.65} value2={0.7} value3={0.85} />
+      <Tachometer3 value1={0.33} value2={0.35} value3={0.45} text={263.5} units={['₽', 'млрд']} />
+      <DonutChart3 startDegree={60} value1={0.65} value2={0.7} value3={0.85} text={"3263.5"} units={['₽', 'млрд']} />
     </div>
   );
 }

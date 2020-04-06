@@ -5,45 +5,67 @@ const DonutChart3 = ({
   value1 = 0.1,
   value2 = 0.6,
   value3 = 1,
+  text,
+  units = ["м³", "млрд"],
   ...props
 }) => {
+  const int = Math.trunc(text);
+  const frac = Math.abs((text % 1).toFixed(1) * 10);
   return (
-    <svg
-      fill="none"
-      transform={`rotate(${startDegree - 90} 0 0)`}
-      viewBox="0 0 38 38"
-      {...props}
-    >
+    <svg fill="none" viewBox="0 0 38 38" {...props}>
       <defs>
         <linearGradient id="paint1_linear12" x1="0%" y1="0%" x2="75%" y2="0%">
           <stop stopColor="#00E0FF" />
           <stop offset="1" stopColor="#004FAB" />
         </linearGradient>
       </defs>
-      <circle
-        cx="19"
-        cy="19"
-        r="17"
-        stroke="#FF48B6"
-        strokeWidth="2"
-        strokeDasharray={[value3 * 103.67, 103.67]}
-      ></circle>
-      <circle
-        cx="19"
-        cy="19"
-        r="15"
-        stroke="#00E0FF"
-        strokeWidth="2"
-        strokeDasharray={[value2 * 97.387, 97.387]}
-      ></circle>
-      <circle
-        cx="19"
-        cy="19"
-        r="16"
-        stroke="url(#paint1_linear12)"
-        strokeWidth="4"
-        strokeDasharray={[value1 * 100, 100]}
-      ></circle>
+      <g transform={`rotate(${startDegree - 90} 19 19)`}>
+        <circle
+          cx="19"
+          cy="19"
+          r="17"
+          stroke="#FF48B6"
+          strokeWidth="2"
+          strokeDasharray={[value3 * 103.67, 103.67]}
+        ></circle>
+        <circle
+          cx="19"
+          cy="19"
+          r="15"
+          stroke="#00E0FF"
+          strokeWidth="2"
+          strokeDasharray={[value2 * 97.387, 97.387]}
+        ></circle>
+        <circle
+          cx="19"
+          cy="19"
+          r="16"
+          stroke="url(#paint1_linear12)"
+          strokeWidth="4"
+          strokeDasharray={[value1 * 100, 100]}
+        ></circle>
+      </g>
+      <text
+        x="19"
+        y="19"
+        fill="#009DB2"
+        textAnchor="middle"
+        fontSize="7.5"
+        fontWeight="300"
+      >
+        {int}
+        <tspan fontSize="0.85em" opacity={0.8}>
+          ,{frac}
+        </tspan>
+      </text>
+      <text fill="#009DB2" textAnchor="middle" fontSize="6">
+        <tspan x="19" y="26">
+          {units[0]}
+        </tspan>
+        <tspan x="19" y="28" fontSize="3" fontWeight="500">
+          {units[1]}
+        </tspan>
+      </text>
     </svg>
   );
 };

@@ -1,6 +1,16 @@
 import React from "react";
 
-const Tachometer3 = ({ value1, value2, value3, ...props }) => {
+const Tachometer3 = ({
+  value1,
+  value2,
+  value3,
+  text,
+  units = ["м³", "млрд"],
+  ...props
+}) => {
+  const int = Math.trunc(text);
+  const frac = Math.abs((text % 1).toFixed(1) * 10);
+
   return (
     <svg fill="none" viewBox="-100 0 1303 1159" {...props}>
       <g mask="url(#cut-off)">
@@ -55,6 +65,27 @@ const Tachometer3 = ({ value1, value2, value3, ...props }) => {
         fill="#FF48B6"
         transform={`rotate(${value3 * 275 - 137.5} 550 655)`}
       />
+      <text
+        x="550"
+        y="650"
+        fill="#009DB2"
+        textAnchor="middle"
+        fontSize="250"
+        fontWeight="300"
+      >
+        {int}
+        <tspan fontSize="0.85em" opacity={0.8}>
+          ,{frac}
+        </tspan>
+      </text>
+      <text fill="#009DB2" textAnchor="middle" fontSize="200">
+        <tspan x="550" y="930">
+          {units[0]}
+        </tspan>
+        <tspan x="550" y="1000" fontSize="100" fontWeight="500">
+          {units[1]}
+        </tspan>
+      </text>
 
       <defs>
         <mask id="cut-off">

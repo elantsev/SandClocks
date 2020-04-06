@@ -1,6 +1,9 @@
 import React from "react";
 
 function Tachometer({ value }) {
+  const int = Math.trunc(value * 100);
+  const frac = Math.abs(((value * 100) % 1).toFixed(1) * 10);
+
   return (
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-50 0 941 914">
       {/* нижняя, серая шкала */}
@@ -31,10 +34,27 @@ function Tachometer({ value }) {
         transform={`rotate(${value * 279.5 + 209} 420.5 463)`}
       ></path>
 
+      <text
+        x="420"
+        y="500"
+        fill="#009DB2"
+        textAnchor="middle"
+        fontSize="250"
+        fontWeight="300"
+      >
+        {int}
+        <tspan fontSize="0.85em" opacity={0.8}>
+          ,{frac}
+        </tspan>
+      </text>
+      <text x="420" y="700" fill="#009DB2" textAnchor="middle" fontSize="200">
+        %
+      </text>
+
       <defs>
         <defs>
           <mask id="cut-off-bottom">
-            {/* вспомогательный круг */}
+            {/* вспомогательный круг */} 
             <circle
               transform="rotate(130 420.5 463)"
               cx="420.5"
