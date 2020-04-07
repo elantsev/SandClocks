@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 function Tachometer({ value }) {
   const int = Math.trunc(value * 100);
@@ -54,7 +55,7 @@ function Tachometer({ value }) {
       <defs>
         <defs>
           <mask id="cut-off-bottom">
-            {/* вспомогательный круг */} 
+            {/* вспомогательный круг */}
             <circle
               transform="rotate(130 420.5 463)"
               cx="420.5"
@@ -81,5 +82,7 @@ function Tachometer({ value }) {
     </svg>
   );
 }
-
+Tachometer.propTypes = {
+  value: PropTypes.number
+};
 export default Tachometer;

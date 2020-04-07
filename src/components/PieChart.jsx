@@ -1,6 +1,7 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-const PieChart = ({ startDegree = 0, value = 70, color = "red", ...props }) => {
+const PieChart = ({ startDegree, value, color, ...props }) => {
   return (
     <svg
       fill="none"
@@ -24,5 +25,15 @@ const PieChart = ({ startDegree = 0, value = 70, color = "red", ...props }) => {
       ></circle>
     </svg>
   );
+};
+PieChart.propTypes = {
+  value: PropTypes.number.isRequired,
+  color: PropTypes.string,
+  startDegree: PropTypes.number
+};
+
+PieChart.defaultProps = {
+  color: "url(#gradient)",
+  startDegree: 0,
 };
 export default PieChart;

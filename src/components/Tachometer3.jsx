@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const Tachometer3 = ({
   value1,
@@ -403,5 +404,17 @@ const Tachometer3 = ({
       </defs>
     </svg>
   );
+};
+
+Tachometer3.propTypes = {
+  units: PropTypes.arrayOf(PropTypes.string),
+  text: PropTypes.number.isRequired,
+  value3: PropTypes.number.isRequired,
+  value2: PropTypes.number.isRequired,
+  value1: PropTypes.number.isRequired
+};
+
+Tachometer3.defaultProps = {
+  units: ["м³", "млрд"]
 };
 export default Tachometer3;

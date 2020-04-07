@@ -129,14 +129,15 @@ ReactSvgDonutChart.propTypes = {
     })
   ),
   spacing: PropTypes.number,
-  text: PropTypes.string.isRequired,
+  text: PropTypes.number.isRequired,
   units: PropTypes.arrayOf(PropTypes.string),
   startDegree: PropTypes.number
 };
 
 ReactSvgDonutChart.defaultProps = {
   data: [],
-  spacing: 0
+  spacing: 0,
+  units: ["м³", "млрд"]
 };
 
 export default ReactSvgDonutChart;

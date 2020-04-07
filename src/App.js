@@ -45,8 +45,8 @@ function App () {
       <PieChart startDegree={0} value={0.85} color={'url(#gradient)'} />
       <Tachometer value={0.85} />
       <Tachometer3 value1={0.33} value2={0.35} value3={0.45} text={263.5} units={['₽', 'млрд']} />
-      <DonutChart3 startDegree={60} value1={0.65} value2={0.7} value3={0.85} text={"3263.5"} units={['₽', 'млрд']} />
-      <ReactSvgDonutChart data={data} spacing={0.8} startDegree={0} text={"3263.5"} units={['₽', 'млрд']} />
+      <DonutChart3 startDegree={60} value1={0.65} value2={0.7} value3={0.85} text={3263.5} units={['₽', 'млрд']} />
+      <ReactSvgDonutChart data={data} spacing={0.8} startDegree={0} text={3263.5} units={['₽', 'млрд']} />
     </div>
   );
 }

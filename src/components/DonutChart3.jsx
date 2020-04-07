@@ -1,12 +1,13 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const DonutChart3 = ({
-  startDegree = 0,
-  value1 = 0.1,
-  value2 = 0.6,
-  value3 = 1,
+  startDegree,
+  value1,
+  value2,
+  value3,
   text,
-  units = ["м³", "млрд"],
+  units,
   ...props
 }) => {
   const int = Math.trunc(text);
@@ -68,5 +69,18 @@ const DonutChart3 = ({
       </text>
     </svg>
   );
+};
+DonutChart3.propTypes = {
+  units: PropTypes.arrayOf(PropTypes.string),
+  text: PropTypes.number.isRequired,
+  value3: PropTypes.number.isRequired,
+  value2: PropTypes.number.isRequired,
+  value1: PropTypes.number.isRequired,
+  startDegree: PropTypes.number
+};
+
+DonutChart3.defaultProps = {
+  startDegree: 0,
+  units: ["м³", "млрд"]
 };
 export default DonutChart3;
